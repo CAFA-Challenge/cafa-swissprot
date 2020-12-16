@@ -1,0 +1,37 @@
+
+sprot_file: ../uniprot/2019_01/uniprot_sprot.dat
+output_directory: ./filtered_output_example
+
+# Use a valid NCBI taxonomy ID:
+taxonomy: 4577 # Zea mays #9606
+taxonomies:
+  - 9606 # Human
+  - 4577 # Zea mays
+
+# ontologies is optional, generate_no_exp_files will use CCO, BPO and MFO as
+#  defaults when ontologies is not specified
+ontologies:
+  - CCO
+  - BPO
+  - MFO
+
+# allowed_evidence_codes are optional, the generate_no_exp_files command will use
+# internal defaults when allowed_evidence_codes are not specified.
+# These codes are codes that ARE ALLOWED to pass through the filtering
+allowed_evidence_codes:
+  - IEA
+  - NR
+  - ND
+  - IC
+  - NAS
+  - TAS
+  - ISS
+  - ISO
+  - ISA
+  - ISM
+  - IGC
+  - IBA
+  - IBD
+  - IKR
+  - IRD
+  - RCA

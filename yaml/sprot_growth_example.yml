@@ -1,0 +1,31 @@
+
+input_files:
+  #- /home/scott/virtualenvs/cafa_swissprot/code/cafa_swissprot/tests/test_data/uniprot/2019_01/uniprot_sprot_truncated.dat
+  #- /home/scott/virtualenvs/cafa_swissprot/code/cafa_swissprot/tests/test_data/uniprot/2019_06/uniprot_sprot_truncated.dat
+  #- /home/scott/virtualenvs/cafa_swissprot/code/cafa_swissprot/tests/test_data/uniprot/2020_01/uniprot_sprot_truncated.dat
+  #- /home/scott/virtualenvs/cafa_swissprot/code/cafa_swissprot/tests/test_data/uniprot/2020_05/uniprot_sprot_truncated.dat
+
+  - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2019_01/uniprot_sprot.dat
+  - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2019_06/uniprot_sprot.dat
+  - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2020_01/uniprot_sprot.dat
+  - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2020_05/uniprot_sprot.dat
+
+taxonomies:
+  - 9606 # Human
+  - 4577 # Zea mays
+
+taxonomy: 9606
+
+ontologies:
+  - CCO
+  - BPO
+  - MFO
+
+evidence_codes:
+  - EXP
+  - IDA
+  - IPI
+  - IMP
+  - IGI
+  - IEP
+
