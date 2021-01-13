@@ -1,4 +1,3 @@
-import sys
 import os
 from pathlib import Path
 from typing import Iterable, Optional, TextIO
@@ -48,7 +47,7 @@ def go_evidence_code_filter(
 
 def species_filter(
     sp_handle: TextIO,
-    #output_handle: TextIO = None,
+    # output_handle: TextIO = None,
     output_directory: Optional[str] = ".",
     taxonomies=Iterable[str],
 ):
@@ -66,13 +65,13 @@ def species_filter(
         for taxon in taxonomies
     }
 
-    '''
+    """
     # Write results either to a (1) specified file-like handle or to (2) stdout:
     if output_handle is not None:
         write_handle = output_handle
     else:
         write_handle = sys.stdout
-    '''
+    """
 
     sp_handle.seek(0)
 
@@ -118,10 +117,8 @@ def write_no_exp_files(
     Writes 1 or more (based on number of provided namespaces) output files
     """
     output_dir_path = Path(output_dir or ".")
-
     taxonomy = str(taxonomy)
-    # instance of the ID generator function:
-    ids = get_id_sequence()
+
     write_filename_pattern = "sp_species.{}.{}.noexp.tfa"
     out_handles = {
         "ALL": open(
@@ -137,7 +134,12 @@ def write_no_exp_files(
 
     sprot_handle.seek(0)
 
-    for protein_seq_record, allowed_map in get_no_exp_proteins(sprot_handle, taxonomy=taxonomy, namespaces=namespaces, allowed_evidence_codes=allowed_evidence_codes):
+    for protein_seq_record, allowed_map in get_no_exp_proteins(
+        sprot_handle,
+        taxonomy=taxonomy,
+        namespaces=namespaces,
+        allowed_evidence_codes=allowed_evidence_codes,
+    ):
         for ontology, is_allowed in allowed_map.items():
             if is_allowed is False:
                 continue
@@ -147,48 +149,21 @@ def write_no_exp_files(
         if all(allowed_map.values()):
             SeqIO.write(protein_seq_record, out_handles["ALL"], "fasta")
 
-    '''
-    # Filter Swiss Prot data by taxon:
-    proteins = [
-        record
-        for record in SwissProt.parse(sprot_handle)
-        if taxonomy in record.taxonomy_id
-    ]
-
-    for record in proteins:
-        assert taxonomy in record.taxonomy_id
-        # This gives us the next integer in the sequence:
-        _id = next(ids)
-
-        # go_evidence_code_filter() returns a dict mapping ontologies (keys) to boolean values
-        is_in_allowed = go_evidence_code_filter(
-            record, namespaces=namespaces, allowed_evidence_codes=allowed_evidence_codes
-        )
-
-        for ontology, is_allowed in is_in_allowed.items():
-            if is_allowed is False:
-                continue
-
-            protein_seq = SeqRecord(
-                Seq(record.sequence),
-                id=f"T{taxonomy}{_id:0>7}",
-                description=record.entry_name,
-            )
-            SeqIO.write(protein_seq, out_handles[ontology], "fasta")
-
-        if all(is_in_allowed.values()):
-            SeqIO.write(protein_seq, out_handles["ALL"], "fasta")
-    '''
     for handle in out_handles.values():
         handle.close()
 
 
-def get_no_exp_proteins(sprot_file_handle:TextIO, taxonomy:str, namespaces:Iterable, allowed_evidence_codes:Iterable) -> tuple:
-    ''' A generator that parses a file-like object (Swissprot data) and
+def get_no_exp_proteins(
+    sprot_file_handle: TextIO,
+    taxonomy: str,
+    namespaces: Iterable,
+    allowed_evidence_codes: Iterable,
+) -> tuple:
+    """A generator that parses a file-like object (Swissprot data) and
     returns (yields) tuples containing a SeqRecord object and a dict mapping
     ontologies to boolean values. See go_evidence_code_filter() for more info
     on the dict.
-    '''
+    """
     sprot_file_handle.seek(0)
     ids = get_id_sequence()
     taxonomy = str(taxonomy)
@@ -206,8 +181,7 @@ def get_no_exp_proteins(sprot_file_handle:TextIO, taxonomy:str, namespaces:Itera
 
         # go_evidence_code_filter() returns a dict mapping ontologies (keys) to boolean values
         is_in_allowed = go_evidence_code_filter(
-            record, namespaces=namespaces,
-            allowed_evidence_codes=allowed_evidence_codes
+            record, namespaces=namespaces, allowed_evidence_codes=allowed_evidence_codes
         )
         protein_seq = SeqRecord(
             Seq(record.sequence),
@@ -216,7 +190,6 @@ def get_no_exp_proteins(sprot_file_handle:TextIO, taxonomy:str, namespaces:Itera
         )
 
         yield (protein_seq, is_in_allowed)
-
 
 
 def filter_sprot_by_taxonomies(
@@ -238,7 +211,6 @@ def filter_sprot_by_taxonomies(
         )
 
 
-# def generate_protein_ids_mapping(taxon_id: str, read_directory: str):
 def generate_protein_ids_mapping(taxonomies: Iterable[str], read_directory: str):
     """Writes a .txt file that contains a mapping of generated CAFA protein IDs
     to the original protein IDs from the swissprot .dat file(s).
