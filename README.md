@@ -24,6 +24,7 @@ The `uniprot.org` *.gz files contain several files, only the `...sprot-only...` 
     - create a yaml-formatted configuration file (see `filter_sprot_species_example.yml`)
     - run `CAFA_generate_no_exp_files <YOUR YAML FILE>`
     - results are written to `output_directory` specified in your yaml file
+      
       Output:
         - `sp_species.[taxon_id].tfa` FASTA file containing all the proteins in [taxon_id] (replaced by an actual number, e.g. sp_species.9606.tfa for human.)
         - `sp_species.[taxon_id].MFO.noexp.tfa` Assuming MFO is specified in config, FASTA file for proteins that are not experimentally annotated in the MFO namespace.
