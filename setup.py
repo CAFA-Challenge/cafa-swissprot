@@ -1,7 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="CAFA Swissprot Targets",
+    name="cafa-swissprot",
+    #name="CAFA Swissprot Targets",
     version="0.0.1",
     author="Iddo Friedberg, Scott Zarecor",
     author_email=None,
