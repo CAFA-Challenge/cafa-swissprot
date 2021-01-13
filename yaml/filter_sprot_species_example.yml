@@ -2,8 +2,8 @@
 sprot_file: ../uniprot/2019_01/uniprot_sprot.dat
 output_directory: ./filtered_output_example
 
-# Use a valid NCBI taxonomy ID:
-taxonomy: 4577 # Zea mays #9606
+# Use valid NCBI taxonomy IDs:
+# Taxonomies IDs can be found at https://www.uniprot.org/docs/speclist.txt
 taxonomies:
   - 9606 # Human
   - 4577 # Zea mays

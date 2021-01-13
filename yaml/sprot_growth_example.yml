@@ -10,11 +10,19 @@ input_files:
   - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2020_01/uniprot_sprot.dat
   - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2020_05/uniprot_sprot.dat
 
+# Taxonomies IDs can be found at https://www.uniprot.org/docs/speclist.txt
 taxonomies:
   - 9606 # Human
   - 4577 # Zea mays
-
-taxonomy: 9606
+  - 10090 # mouse
+  - 10116 # rat
+  - 3702 # arabidopsis
+  - 7227 # drosophila
+  - 559292 # yeast
+  - 7955 # zebrafish
+  - 44689 # dicty
+  - 6239 # worm
+  - 83333 # ecoli
 
 ontologies:
   - CCO
@@ -28,4 +36,3 @@ evidence_codes:
   - IMP
   - IGI
   - IEP
-
