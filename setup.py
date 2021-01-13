@@ -28,6 +28,7 @@ setup(
     install_requires=[
         "biopython",
         "PyYAML",
+        "click",
     ],
     zip_safe=False,
 )
