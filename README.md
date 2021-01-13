@@ -1,4 +1,4 @@
-CAFA-sp-targets
+CAFA SwissProt Targets
 ===============
 This is a part of the CAFA project.
 
@@ -65,7 +65,7 @@ The `uniprot.org` *.gz files contain several files, only the `...sprot-only...` 
         | /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2019_01/uniprot_sprot_truncated.dat | 9606  |  9,905 |  8,786 |  7,539 |        |
         ---------------------------------------------------------------------------------------------------------------------------------------
         | /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2019_06/uniprot_sprot_truncated.dat | 9606  |  9,996 |  8,960 |  7,533 |   +259 |
-        -------------------------------------------gtgtgtg--------------------------------------------------------------------------------------------
+        ---------------------------------------------------------------------------------------------------------------------------------------
         | /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2020_01/uniprot_sprot_truncated.dat | 9606  | 10,153 |  9,091 |  7,638 |   +393 |
         ---------------------------------------------------------------------------------------------------------------------------------------
         | /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2020_05/uniprot_sprot_truncated.dat | 9606  | 10,294 |  9,282 |  8,175 |   +869 |
