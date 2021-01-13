@@ -10,7 +10,7 @@ The most recent SwissProt file can be downloaded from here:
 
 ## Running the code:
 ### Install the package: 
-`pip install --upgrade https://github.com/szarecor/cafa-swissprot/archive/v0.1.0-alpha.tar.gz`
+`python -m pip install -e "git+https://github.com/CAFA-Challenge/cafa-swissprot#egg=cafa-swissprot"`
 
 Download one or more SwissProt files. The most recent release is available here: 
 <ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.dat.gz>
