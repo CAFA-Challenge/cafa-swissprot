@@ -10,10 +10,10 @@ The most recent SwissProt file can be downloaded from here:
 
 ## Running the code:
 ### Install the package: 
-`pip install --upgrade https://github.com/.../.../tarball/master`
+`pip install --upgrade https://github.com/szarecor/cafa-swissprot/archive/v0.1.0-alpha.tar.gz`
 
 Download one or more SwissProt files. The most recent release is available here: 
-(ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.dat.gz)
+<ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.dat.gz>
 
 The `uniprot.org` *.gz files contain several files, only the `...sprot-only...` files are relevant here.
 
