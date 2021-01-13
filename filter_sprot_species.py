@@ -105,7 +105,7 @@ def get_id_sequence():
 
 
 def write_no_exp_files(
-    sp_handle: TextIO,
+    sprot_handle: TextIO,
     taxonomy: str,
     namespaces: Iterable[str],
     output_dir: Optional[str],
@@ -135,16 +135,18 @@ def write_no_exp_files(
             "w",
         )
 
-    sp_handle.seek(0)
+    sprot_handle.seek(0)
     # Filter Swiss Prot data by taxon:
     proteins = [
         record
-        for record in SwissProt.parse(sp_handle)
+        for record in SwissProt.parse(sprot_handle)
         if taxonomy in record.taxonomy_id
     ]
 
     for record in proteins:
         assert taxonomy in record.taxonomy_id
+        # This gives us the next integer in the sequence:
+        _id = next(ids)
 
         # go_evidence_code_filter() returns a dict mapping ontologies (keys) to boolean values
         is_in_allowed = go_evidence_code_filter(
@@ -157,7 +159,7 @@ def write_no_exp_files(
 
             protein_seq = SeqRecord(
                 Seq(record.sequence),
-                id=f"T{taxonomy}{next(ids):0>7}",
+                id=f"T{taxonomy}{_id:0>7}",
                 description=record.entry_name,
             )
             SeqIO.write(protein_seq, out_handles[ontology], "fasta")
@@ -180,7 +182,7 @@ def filter_sprot_by_taxonomies(
 
     for taxonomy in taxonomies:
         write_no_exp_files(
-            sp_handle=sp_handle,
+            sprot_handle=sp_handle,
             taxonomy=str(taxonomy),
             namespaces=namespaces,
             output_dir=output_dir,

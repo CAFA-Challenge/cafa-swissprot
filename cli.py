@@ -155,7 +155,7 @@ def generate_no_exp_files(config_handle, quiet=False):
 
     _print(f"Opening {sprot_file}")
     with open(sprot_file, "r") as sprot_handle:
-        species_filter(sprot_handle, taxonomies=taxonomies)
+        #species_filter(sprot_handle, taxonomies=taxonomies)
         _print("Filtering by GO Namespace and Evidence Code")
         if namespaces:
             _print(f"\tUsing GO namespaces: {namespaces}")
