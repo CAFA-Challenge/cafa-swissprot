@@ -136,6 +136,18 @@ def write_no_exp_files(
         )
 
     sprot_handle.seek(0)
+
+    for protein_seq_record, allowed_map in get_no_exp_proteins(sprot_handle, taxonomy=taxonomy, namespaces=namespaces, allowed_evidence_codes=allowed_evidence_codes):
+        for ontology, is_allowed in allowed_map.items():
+            if is_allowed is False:
+                continue
+
+            SeqIO.write(protein_seq_record, out_handles[ontology], "fasta")
+
+        if all(allowed_map.values()):
+            SeqIO.write(protein_seq_record, out_handles["ALL"], "fasta")
+
+    '''
     # Filter Swiss Prot data by taxon:
     proteins = [
         record
@@ -166,9 +178,45 @@ def write_no_exp_files(
 
         if all(is_in_allowed.values()):
             SeqIO.write(protein_seq, out_handles["ALL"], "fasta")
-
+    '''
     for handle in out_handles.values():
         handle.close()
+
+
+def get_no_exp_proteins(sprot_file_handle:TextIO, taxonomy:str, namespaces:Iterable, allowed_evidence_codes:Iterable) -> tuple:
+    ''' A generator that parses a file-like object (Swissprot data) and
+    returns (yields) tuples containing a SeqRecord object and a dict mapping
+    ontologies to boolean values. See go_evidence_code_filter() for more info
+    on the dict.
+    '''
+    sprot_file_handle.seek(0)
+    ids = get_id_sequence()
+    taxonomy = str(taxonomy)
+
+    proteins = [
+        record
+        for record in SwissProt.parse(sprot_file_handle)
+        if taxonomy in record.taxonomy_id
+    ]
+
+    for record in proteins:
+        assert taxonomy in record.taxonomy_id
+        # This gives us the next integer in the sequence:
+        _id = next(ids)
+
+        # go_evidence_code_filter() returns a dict mapping ontologies (keys) to boolean values
+        is_in_allowed = go_evidence_code_filter(
+            record, namespaces=namespaces,
+            allowed_evidence_codes=allowed_evidence_codes
+        )
+        protein_seq = SeqRecord(
+            Seq(record.sequence),
+            id=f"T{taxonomy}{_id:0>7}",
+            description=record.entry_name,
+        )
+
+        yield (protein_seq, is_in_allowed)
+
 
 
 def filter_sprot_by_taxonomies(
