@@ -14,9 +14,10 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "CAFA_experimental_growth = cli:experimental_growth",
-            "CAFA_print_annotation_counts = cli:print_annotation_counts",
-            "CAFA_generate_no_exp_files = cli:generate_no_exp_files",
+            "CAFA_experimental_growth = cli:cli_experimental_growth",
+            "CAFA_print_annotation_counts = cli:cli_print_annotation_counts",
+            "CAFA_generate_no_exp_files = cli:cli_generate_no_exp_files",
+            "CAFA_generate_protein_fasta = cli:cli_generate_protein_fasta",
         ]
     },
     classifiers=(

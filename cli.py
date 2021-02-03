@@ -20,12 +20,26 @@ from filter_sprot_species import (
     filter_sprot_by_taxonomies,
     generate_protein_ids_mapping,
 )
+from make_blast_predictor import generate_protein_fasta
+
 from utils import TAXONOMY_LOOKUP
+
+@click.command()
+@click.argument("config_handle", type=click.File("r"))
+def cli_generate_protein_fasta(config_handle):
+    """ Generates fasta-formatted file containing protein sequences for the
+    proteins IDs in the provided protein_ids_filepath file. """
+    conf = yaml.load(config_handle, Loader=yaml.FullLoader)
+    protein_ids_filepath = conf.get("protein_ids_filepath")
+    swissprot_filepath = conf.get("swissprot_filepath")
+    output_filepath = conf.get("output_filepath")
+    with open(output_filepath, "w") as output_handle:
+        generate_protein_fasta(protein_ids_filepath, swissprot_filepath, output_handle)
 
 
 @click.command()
 @click.argument("config_handle", type=click.File("r"))
-def experimental_growth(config_handle):
+def cli_experimental_growth(config_handle):
     """Collects counts of annotations for the given taxonomy per ontology namespace
     filtered by the provided evidence codes. The counts are printed to stdout.
     """
@@ -87,7 +101,7 @@ def experimental_growth(config_handle):
 
 @click.command()
 @click.argument("config_handle", type=click.File("r"))
-def print_annotation_counts(config_handle):
+def cli_print_annotation_counts(config_handle):
     """Collects counts of annotations for the given taxonomy per ontology namespace
     filtered by the provided evidence codes. The counts are printed to stdout.
     """
@@ -116,7 +130,7 @@ def print_annotation_counts(config_handle):
     default=False,
     help="suppress stdout progress messages",
 )
-def generate_no_exp_files(config_handle, quiet=False):
+def cli_generate_no_exp_files(config_handle, quiet=False):
     """Parses a swissprot file and extracts protein data for the given taxonomy
     where there is little/no experimental annotation for the relevant GO namespaces
     and evidence codes. That protein data is written to a series of fasta files.

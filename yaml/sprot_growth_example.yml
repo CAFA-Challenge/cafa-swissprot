@@ -1,10 +1,8 @@
 
 input_files:
-  #- /home/scott/virtualenvs/cafa_swissprot/code/cafa_swissprot/tests/test_data/uniprot/2019_01/uniprot_sprot_truncated.dat
-  #- /home/scott/virtualenvs/cafa_swissprot/code/cafa_swissprot/tests/test_data/uniprot/2019_06/uniprot_sprot_truncated.dat
-  #- /home/scott/virtualenvs/cafa_swissprot/code/cafa_swissprot/tests/test_data/uniprot/2020_01/uniprot_sprot_truncated.dat
-  #- /home/scott/virtualenvs/cafa_swissprot/code/cafa_swissprot/tests/test_data/uniprot/2020_05/uniprot_sprot_truncated.dat
-
+  # the .dat files need to be downloaded and unpacked from
+  # ftp://ftp.uniprot.org/pub/databases/uniprot/
+  # See this project's README for more information.
   - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2019_01/uniprot_sprot.dat
   - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2019_06/uniprot_sprot.dat
   - /home/scott/virtualenvs/cafa_swissprot/code/uniprot/2020_01/uniprot_sprot.dat
@@ -12,17 +10,17 @@ input_files:
 
 # Taxonomies IDs can be found at https://www.uniprot.org/docs/speclist.txt
 taxonomies:
-  - 9606 # Human
-  - 4577 # Zea mays
-  - 10090 # mouse
-  - 10116 # rat
-  - 3702 # arabidopsis
-  - 7227 # drosophila
-  - 559292 # yeast
-  - 7955 # zebrafish
-  - 44689 # dicty
-  - 6239 # worm
-  - 83333 # ecoli
+  - 9606    # Human
+  - 4577    # Zea mays
+  - 10090   # mouse
+  - 10116   # rat
+  - 3702    # arabidopsis
+  - 7227    # drosophila
+  - 559292  # yeast
+  - 7955    # zebrafish
+  - 44689   # dicty
+  - 6239    # worm
+  - 83333   # ecoli
 
 ontologies:
   - CCO
