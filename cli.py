@@ -20,6 +20,7 @@ from filter_sprot_species import (
     filter_sprot_by_taxonomies,
     generate_protein_ids_mapping,
 )
+<<<<<<< HEAD
 from make_blast_predictor import generate_protein_fasta
 
 from utils import TAXONOMY_LOOKUP
@@ -40,6 +41,14 @@ def cli_generate_protein_fasta(config_handle):
 @click.command()
 @click.argument("config_handle", type=click.File("r"))
 def cli_experimental_growth(config_handle):
+=======
+from utils import TAXONOMY_LOOKUP
+
+
+@click.command()
+@click.argument("config_handle", type=click.File("r"))
+def experimental_growth(config_handle):
+>>>>>>> b4741a762d6e50506fc95d6c8e974644e1f02f75
     """Collects counts of annotations for the given taxonomy per ontology namespace
     filtered by the provided evidence codes. The counts are printed to stdout.
     """
@@ -101,7 +110,11 @@ def cli_experimental_growth(config_handle):
 
 @click.command()
 @click.argument("config_handle", type=click.File("r"))
+<<<<<<< HEAD
 def cli_print_annotation_counts(config_handle):
+=======
+def print_annotation_counts(config_handle):
+>>>>>>> b4741a762d6e50506fc95d6c8e974644e1f02f75
     """Collects counts of annotations for the given taxonomy per ontology namespace
     filtered by the provided evidence codes. The counts are printed to stdout.
     """
@@ -130,7 +143,11 @@ def cli_print_annotation_counts(config_handle):
     default=False,
     help="suppress stdout progress messages",
 )
+<<<<<<< HEAD
 def cli_generate_no_exp_files(config_handle, quiet=False):
+=======
+def generate_no_exp_files(config_handle, quiet=False):
+>>>>>>> b4741a762d6e50506fc95d6c8e974644e1f02f75
     """Parses a swissprot file and extracts protein data for the given taxonomy
     where there is little/no experimental annotation for the relevant GO namespaces
     and evidence codes. That protein data is written to a series of fasta files.
@@ -169,7 +186,11 @@ def cli_generate_no_exp_files(config_handle, quiet=False):
 
     _print(f"Opening {sprot_file}")
     with open(sprot_file, "r") as sprot_handle:
+<<<<<<< HEAD
         species_filter(sprot_handle, taxonomies=taxonomies)
+=======
+        #species_filter(sprot_handle, taxonomies=taxonomies)
+>>>>>>> b4741a762d6e50506fc95d6c8e974644e1f02f75
         _print("Filtering by GO Namespace and Evidence Code")
         if namespaces:
             _print(f"\tUsing GO namespaces: {namespaces}")
