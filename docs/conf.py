@@ -21,6 +21,7 @@ project = 'CAFA Swissprot Utilities'
 copyright = '2021'
 author = 'Scott Zarecor'
 
+pygments_style = 'sphinx'
 
 # -- General configuration ---------------------------------------------------
 

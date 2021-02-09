@@ -23,7 +23,8 @@ The `uniprot.org` *.gz files contain several files, only the `...sprot-only...` 
 Identify low-annotation candidate proteins in a SwissProt file
 --------------------------------------------------------------
 
-   1. create a yaml-formatted configuration file (see ``yaml/filter_sprot_species_example.yml``)
+   1. create a yaml-formatted configuration file. See ``yaml/filter_sprot_species_example.yml`` in the git repo for details
+      regarding the contents of the yaml file.
 
       Here's a minimal example::
 
@@ -33,9 +34,9 @@ Identify low-annotation candidate proteins in a SwissProt file
            - 9606 # Human
            - 4577 # Zea mays
         ontologies:
-          - CCO
-          - BPO
-          - MFO
+           - CCO
+           - BPO
+           - MFO
         allowed_evidence_codes: [IEA, NR, ND, IC, NAS, TAS, ISS, ISO, ISA, ISM, IGC, IBA, IBD, IKR, IRD, RCA]
 
 
@@ -52,8 +53,10 @@ Identify low-annotation candidate proteins in a SwissProt file
 
 Count proteins
 --------------
-1. create a yaml-formatted configuration file (see ``yaml/sprot_growth_example.yml``). Please note that this yaml
-    file is different from the one used above for ``CAFA_generate_no_exp_files``
+1. create a yaml-formatted configuration file. See ``yaml/sprot_growth_example.yml`` in the git repo for details.
+
+   .. note::
+      Please note that this yaml file is different from the one used above for ``CAFA_generate_no_exp_files``
 
    Here is an example yaml configuration::
 
