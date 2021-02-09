@@ -16,7 +16,7 @@ Here is example code for generating and saving a propagation matrix:
         obo_filepath=obofilepath,
         namespace=namespace
    )
-   cco_propagation_matrix.to_pickle("./cco_propagation_matrix.pkl")
+   cco_propagation_matrix.to_pickle(f"./{namespace}_propagation_matrix.pkl")
 
 
 .. note::
