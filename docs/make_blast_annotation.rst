@@ -17,12 +17,12 @@ Naive Predictor
         namespace_verbose=namespace,
     )
 
-`generate_naive_predictor()` returns a Pandas Series with GO terms as indices and
+``generate_naive_predictor()`` returns a Pandas Series with GO terms as indices and
 floating point numbers as values. Because the naive predictor is based solely on
 GO term frequency, there is no protein data in the predictor pandas.Series. Instead,
 *every* protein would have a predicted annotation at the given confidence level.
 
-Here is a truncated output example for `generate_naive_predictor()`:
+Here is a truncated output example for ``generate_naive_predictor()``:
 
 ===========   ==========
 GO Term       Confidence
@@ -54,8 +54,8 @@ Generating a CAFA baseline Blast annotation requires a few things:
 
 1. An OBO file
 2. A Swissprot file
-3. A file containing the output of a `blastp` query
-4. a file containing a pickled Pandas DataFrame representing the GO ontology hierarchy
+3. A file containing the output of a ``blastp`` query
+4. A file containing a pickled Pandas DataFrame representing the GO ontology hierarchy
 
 Here's a simple example:
 
@@ -82,7 +82,7 @@ Here's a simple example:
 
 
 
-`get_predictions()` will return a pandas.DataFrame with proteins as indices (rows)
+``get_predictions()`` will return a pandas.DataFrame with proteins as indices (rows)
 and GO terms as columns. Values in the dataframe will be floating point numbers from 0 to 1
 representing the confidence for the given annotation.
 

@@ -23,37 +23,47 @@ The `uniprot.org` *.gz files contain several files, only the `...sprot-only...` 
 Identify low-annotation candidate proteins in a SwissProt file
 --------------------------------------------------------------
 
-   1. create a yaml-formatted configuration file. See ``yaml/filter_sprot_species_example.yml`` in the git repo for details
-      regarding the contents of the yaml file.
+1. create a yaml-formatted configuration file. See |filter_swissport_example_yaml| in the git repo for details
+   regarding the contents of the yaml file.
 
-      Here's a minimal example::
+   .. |filter_swissport_example_yaml| raw:: html
 
-        sprot_file: ./uniprot_sprot.dat
-        output_directory: ./filtered_output_example
-        taxonomies:
-           - 9606 # Human
-           - 4577 # Zea mays
-        ontologies:
-           - CCO
-           - BPO
-           - MFO
-        allowed_evidence_codes: [IEA, NR, ND, IC, NAS, TAS, ISS, ISO, ISA, ISM, IGC, IBA, IBD, IKR, IRD, RCA]
+      <a href="https://github.com/CAFA-Challenge/cafa-swissprot/blob/main/yaml/filter_sprot_species_example.yml" target="_blank">filter_sprot_species_example.yml</a>
 
 
-   2. run ``CAFA_generate_no_exp_files <YOUR YAML FILEPATH>``
-   3. results are written to ``output_directory`` specified in your yaml file
+   Here is a minimal example::
 
-      Output:
-        - ``sp_species.[taxon_id].tfa`` FASTA file containing all the proteins in [taxon_id] (replaced by an actual number, e.g. sp_species.9606.tfa for human.)
-        - ``sp_species.[taxon_id].MFO.noexp.tfa`` Assuming MFO is specified in config, FASTA file for proteins that are not experimentally annotated in the MFO namespace.
-        - ``sp_species.[taxon_id].BPO.noexp.tfa`` See above.
-        - ``sp_species.[taxon_id].CCO.noexp.tfa`` See above.
-        - ``sp_species.[taxon_id].all.noexp.tfa`` FASTA file containing proteins that are not experimentally annotated in *any* GO ontology.
+     sprot_file: ./uniprot_sprot.dat
+     output_directory: ./filtered_output_example
+     taxonomies:
+        - 9606 # Human
+        - 4577 # Zea mays
+     ontologies:
+        - CCO
+        - BPO
+        - MFO
+     allowed_evidence_codes: [IEA, NR, ND, IC, NAS, TAS, ISS, ISO, ISA, ISM, IGC, IBA, IBD, IKR, IRD, RCA]
+
+
+2. run ``CAFA_generate_no_exp_files <YOUR YAML FILEPATH>``
+3. results are written to ``output_directory`` specified in your yaml file
+
+   Output:
+     - ``sp_species.[taxon_id].tfa`` FASTA file containing all the proteins in [taxon_id] (replaced by an actual number, e.g. sp_species.9606.tfa for human.)
+     - ``sp_species.[taxon_id].MFO.noexp.tfa`` Assuming MFO is specified in config, FASTA file for proteins that are not experimentally annotated in the MFO namespace.
+     - ``sp_species.[taxon_id].BPO.noexp.tfa`` See above.
+     - ``sp_species.[taxon_id].CCO.noexp.tfa`` See above.
+     - ``sp_species.[taxon_id].all.noexp.tfa`` FASTA file containing proteins that are not experimentally annotated in *any* GO ontology.
 
 
 Count proteins
 --------------
-1. create a yaml-formatted configuration file. See ``yaml/sprot_growth_example.yml`` in the git repo for details.
+1. create a yaml-formatted configuration file. See |swissprot_growth_example_yaml| in the git repo for details.
+
+   .. |swissprot_growth_example_yaml| raw:: html
+
+      <a href="https://github.com/CAFA-Challenge/cafa-swissprot/blob/main/yaml/sprot_growth_example.yml" target="_blank">sprot_growth_example.yml</a>
+
 
    .. note::
       Please note that this yaml file is different from the one used above for ``CAFA_generate_no_exp_files``
