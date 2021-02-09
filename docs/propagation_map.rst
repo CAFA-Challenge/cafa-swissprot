@@ -12,8 +12,17 @@ Here is example code for generating and saving a propagation matrix:
 
    obo_filepath = "./cafa.obo"
    namespace = "cellular_component"
-   cco_propagation_matrix = get_propagation_map(obo_filepath=obofilepath, namespace=namespace)
+   cco_propagation_matrix = get_propagation_map(
+        obo_filepath=obofilepath,
+        namespace=namespace
+   )
    cco_propagation_matrix.to_pickle("./cco_propagation_matrix.pkl")
+
+
+.. note::
+   ``get_propagation_map()`` expects a long-form namespace like `cellular_component`
+   or `biological_process` for the second parameter and **NOT** ontology abbreviations.
+
 
 The propagation matrix DataFrame will look something like this:
 

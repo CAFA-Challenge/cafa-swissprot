@@ -120,11 +120,3 @@ Count proteins
    make_blast_annotation
    test
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
