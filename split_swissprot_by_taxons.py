@@ -27,7 +27,6 @@ def split_swissprot_by_taxons(
 
         if len(_intersect) > 0:
             _taxon = list(_intersect)[0]
-            print(f"WRITING {key} {_taxon}")
             write_handles[_taxon].write(swissprot_dict.get_raw(key).decode())
 
     for _, file_handle in write_handles.items():

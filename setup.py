@@ -34,3 +34,6 @@ setup(
     ],
     zip_safe=False,
 )
+
+
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ./tests/test_data/uniprot/*" --prune-empty --tag-name-filter cat -- --all
